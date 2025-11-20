@@ -92,14 +92,12 @@ td {
 
 .p1 {
   background: #ff3737b9;
-  box-shadow: 0 0 15px rgba(255, 60, 60, 0.7),
-    inset 0 0 10px rgba(100, 0, 0, 0.7);
+  box-shadow: 0 0 15px rgba(255, 60, 60, 0.7);
 }
 
 .p2 {
   background: #ffd93d;
-  box-shadow: 0 0 15px rgba(255, 217, 61, 0.7),
-    inset 0 0 10px rgba(100, 80, 0, 0.7);
+  box-shadow: 0 0 15px rgba(255, 217, 61, 0.7);
 }
 
 /* RESET BUTTON */
