@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Puissance 4</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>PUISSANCE 4 — Thème Emoji Panneau warning (jsp)</h1>
+    </div>
+
+    <div class="wrap">
+        {{if .Message}}<div class="msg">{{.Message}}</div>{{end}}
+
+        <div class="status">
+            {{if eq .State "playing"}}
+            Tour : {{if eq .CurrentPlayer 1}}Joueur 1 (rouge){{else}}Joueur 2 (jaune){{end}}
+            {{else if eq .State "win_p1"}}🎉 Joueur 1 a gagné !
+            {{else if eq .State "win_p2"}}🎉 Joueur 2 a gagné !
+            {{else if eq .State "draw"}}🤝 Match nul
+            {{end}}
+        </div>
+
+        <table>
+            {{range $r, $row := .Board}}
+            <tr>
+                {{range $c, $cell := $row}}
+                <td>
+                    <form action="/play" method="POST">
+                        <input type="hidden" name="column" value="{{$c}}">
+                        <button class="cell-btn" {{if ne $.State "playing" }}disabled{{end}}>
+                            {{if eq $cell 1}}<span class="disc p1"></span>
+                            {{else if eq $cell 2}}<span class="disc p2"></span>
+                            {{else}}<span class="disc"></span>{{end}}
+                        </button>
+                    </form>
+                </td>
+                {{end}}
+            </tr>
+            {{end}}
+        </table>
+
+        <form action="/reset" method="POST"><button>Reset</button></form>
+    </div>
+</body>
+
+</html>
